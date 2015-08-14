@@ -2,8 +2,11 @@
 PyBack
 ======
 A pure-python pub-sub module for registering, subscribing, and publishing events via callback methods.
+
 License: MIT
+
 Version: 1.0.0 (as of 8/14/2015)
+
 Authors: Shonte Amato-Grill (<https://github.com/shonteag>)
 
 Goals
