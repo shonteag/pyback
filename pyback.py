@@ -11,9 +11,29 @@ subscribing, and publishing events.
 _CHANNELS = {}
 
 class Evt(object):
-	def __init__(self, **kwargs):
+	"""
+	Instantiates an event to be passed to
+	registered callback function(s).
+
+	channel is the channel_key upon which
+	the event was triggered
+
+	kwargs is dict of keyword args to be
+	set as Evt attributes. It may not include
+	the keyword "channel".
+	"""
+	def __init__(self, channel, **kwargs):
+		# check to make sure there are no name
+		# conflicts.
+		if '__channel' in kwargs:
+			raise KeyError("'__channel' is reserved keyword.")
+
 		for k, v in kwargs.items():
+			self.__channel = str(channel)
 			setattr(self, k, v)
+
+	def get_channel(self):
+		return self.__channel
 
 
 # Channel controls
@@ -83,6 +103,7 @@ def unsubscribe(channel_key, func_call):
 		return
 	else:
 		_CHANNELS[channel_key].remove(func_call)
+# end unsubscribe
 
 def publish(channel_key, **kwargs):
 	"""
@@ -102,7 +123,7 @@ def publish(channel_key, **kwargs):
 		return
 	else:
 		# create an Evt instance
-		evt = Evt(**kwargs)
+		evt = Evt(channel_key, **kwargs)
 		for func_call in _CHANNELS[channel_key]:
 			# fire each of the callbacks.
 			try:
