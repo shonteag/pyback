@@ -10,6 +10,10 @@ subscribing, and publishing events.
 # 	'channel_key':[callback_function1, callback_function2, ...]
 _CHANNELS = {}
 
+
+class PybackError(Exception):
+	pass
+
 class Evt(object):
 	"""
 	Instantiates an event to be passed to
@@ -26,7 +30,7 @@ class Evt(object):
 		# check to make sure there are no name
 		# conflicts.
 		if '__channel' in kwargs:
-			raise KeyError("'__channel' is reserved keyword.")
+			raise PybackError("'__channel' is reserved keyword.")
 
 		for k, v in kwargs.items():
 			self.__channel = str(channel)
@@ -81,6 +85,8 @@ def subscribe(channel_key, func_call):
 
 	func_call argument should be a method name
 	that accepts a single argument (event).
+	If func_call is already subscribed, it will
+	NOT be subscribed twice.
 	"""
 	channel_key = str(channel_key)
 
@@ -89,7 +95,13 @@ def subscribe(channel_key, func_call):
 	if channel_key not in _CHANNELS:
 		_CHANNELS.update({channel_key:[func_call]})
 	else:
-		_CHANNELS[channel_key].append(func_call)
+		# check if func_call is already subscribed
+		if func_call in _CHANNELS[channel_key]:
+			raise PybackError("{0} is already subscribed to {1}"
+				.format(func_call, channel_key))
+			return
+		else:
+			_CHANNELS[channel_key].append(func_call)
 # end subscribe
 
 def unsubscribe(channel_key, func_call):
@@ -100,7 +112,7 @@ def unsubscribe(channel_key, func_call):
 	channel_key = str(channel_key)
 
 	if channel_key not in _CHANNELS:
-		return
+		raise 
 	else:
 		_CHANNELS[channel_key].remove(func_call)
 # end unsubscribe
