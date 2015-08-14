@@ -6,9 +6,9 @@ A pure-python pub-sub module for registering, subscribing, and publishing events
 	Shonte Amato-Grill (.. _github: https://github.com/shonteag)
 
 **Goals**
-1) Provide a simple, easy-to-use, interface for using pub/sub.
-2) Keep it simple.
-3) Make it thread safe. (Needs testing!)
+1) Provide a simple, easy-to-use, interface for using pub/sub.  
+2) Keep it simple.  
+3) Make it thread safe. (Needs testing!)  
 
 **Python versions**
 2.7 - Tested and working.
