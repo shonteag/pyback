@@ -90,7 +90,7 @@ allows user to retrieve the channel name (as a str) over which the event was pas
 Examples
 ========
 
-To view examples, download source directory or browse to file ``pyback_examples.py``.
+To view examples, download source directory or `view here on github`_.
 There are several examples available, all are documented within the source code. To
 run examples: ::
 
@@ -99,4 +99,6 @@ run examples: ::
 *Please note* that while pyback is thread-safe, ``example_3()`` makes use of stdout
 for 'processing' of tasks, which is *not* thread safe, which will cause text to be
 jumbled if you add a second Consumer thread!
+
+.. _view here on github: pyback_examples.py
 
