@@ -1,4 +1,5 @@
 """
+Examples for python2.7
 Several examples that demonstrate use of pyback module.
 """
 
@@ -132,8 +133,7 @@ def example_4():
 	print """EXAMPLE 4
 In this example, we register a class method as
 a handler for evt. Not too difficult, really.
-OUTPUT:
-"""
+OUTPUT:"""
 	class Dummy(object):
 		def __init__(self, channel_key):
 			# the object subscribes itself to designated

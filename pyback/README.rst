@@ -10,7 +10,7 @@ A pure-python pub-sub module for registering, subscribing, and publishing events
 :License:
 	MIT
 :Python:
-	2.7 (working)
+	2.7 (working), 3.4 (working)
 
 .. _github: https://github.com/shonteag
 
