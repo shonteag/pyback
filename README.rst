@@ -41,14 +41,14 @@ handlers on said channel::
 
 Objects
 =======
-pyback.Evt()
-^^^^^^^^^^^^
+
+**pyback.Evt(object)**
 Event handlers must accept exactly one argument, which will
 be of type::
 	pyback.Evt(channel, **kwargs)
 
-\*\*kwargs argument is dict ({}) with key, value pairs which
-will be keyed to Evt's built-in __dict\__. For example: ::
+``**kwargs`` argument is dict ({}) with key, value pairs which
+will be keyed to Evt's built-in ``__dict__``. For example: ::
 	import pyback
 	def evt_handler(evt):
 		print evt.name
@@ -63,6 +63,3 @@ This snippet, if run, will output to console: ::
 The only reserved value that **may not** apear in kwargs passed via
 a call to publish() is "__channel". Doing so will throw the exception::
 	pyback.PybackError()
-
-**Built-in methods**::
-	pyback.Evt.get_channel()
