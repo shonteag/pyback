@@ -42,7 +42,7 @@ handlers on said channel::
 Objects
 =======
 pyback.Evt()
-------------
+^^^^^^^^^^^^
 Event handlers must accept exactly one argument, which will
 be of type::
 	pyback.Evt(channel, **kwargs)
