@@ -53,9 +53,11 @@ will be keyed to Evt's built-in __dict\__. For example::
 		print evt.an_int
 	pyback.subscribe('test_channel', evt_handler)
 	pyback.publish('test_channel', name="test_evt_name", an_int=42)
+
 This snippet, if run, will output to console::
 	test_evt_name
 	42
+
 The only reserved value that **may not** apear in kwargs passed via
 a call to publish() is "__channel". Doing so will throw the exception::
 	pyback.PybackError()
