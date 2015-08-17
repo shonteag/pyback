@@ -9,6 +9,8 @@ A pure-python pub-sub module for registering, subscribing, and publishing events
 	Shonte Amato-Grill (`github`_)
 :License:
 	MIT
+:Python:
+	2.7 (working)
 
 .. _github: https://github.com/shonteag
 
