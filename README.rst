@@ -2,9 +2,8 @@
 PyBack
 ======
 A pure-python pub-sub module for registering, subscribing, and publishing events via callback methods.
-:Version:
+:Versioning:
 	1.0.0 as of (17 Aug 2015)  
-	**Under development**
 :Authors:
 	Shonte Amato-Grill (https://github.com/shonteag)
 :License:
@@ -23,9 +22,3 @@ This is a single-file module, and requires no setup to use.
 
 Available Methods
 -----------------
-:code:
-	open_channel('channel_name')
-	close_channel('channel_name')
-	subscribe('channel_name', event_handler_function)
-	unsubscribe('channel_name', event_handler_function)
-	publish('channel_name', kwarg1=value1, kwarg2=value2, ...)
