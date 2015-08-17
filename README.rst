@@ -17,10 +17,9 @@ This is a single-file module, and requires no setup to use.
 
 Available Methods
 -----------------
-`
-open_channel('channel_name')
-close_channel('channel_name')
-subscribe('channel_name', event_handler_function)
-unsubscribe('channel_name', event_handler_function)
-publish('channel_name', kwarg1=value1, kwarg2=value2, ...)
-`
+:code:
+	open_channel('channel_name')
+	close_channel('channel_name')
+	subscribe('channel_name', event_handler_function)
+	unsubscribe('channel_name', event_handler_function)
+	publish('channel_name', kwarg1=value1, kwarg2=value2, ...)
