@@ -27,6 +27,7 @@ OUTPUT:"""
 
 	print "-" * 50
 
+
 def example_2():
 	print """EXAMPLE 2
 1) Open a new channel.
@@ -111,12 +112,21 @@ OUTPUT:"""
 	channel_key = 'consumer_channel'
 	pyback.subscribe(channel_key, evt_handler)
 
-	# launch a consumer
-	thread = threading.Thread(target=consumer_method, args=('consumerID#1', queue, channel_key))
-	thread.start()
+	# launch consumer
+	# NOTE: thread2 is commented out because it makes use of
+	# stdout, which is NON-THREAD-SAFE, causing output to be
+	# out of order. To use stdout from within event handlers,
+	# it will be necessary to use a thread-safe print method.
 
+	thread = threading.Thread(target=consumer_method, args=('consumerID#1', queue, channel_key))
+	#thread2 = threading.Thread(target=consumer_method, args=('consumerID#2', queue, channel_key))
+	thread.start()
+	#thread2.start()
 	thread.join()
+	#thread2.join()
+
 	print "-" * 50
+
 
 if __name__ == "__main__":
 	example_1()

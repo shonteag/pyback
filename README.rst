@@ -94,3 +94,7 @@ run examples: ::
 
 	$ python pyback_examples.py
 
+*Please note* that while pyback is thread-safe, ``example_3()`` makes use of stdout
+for 'processing' of tasks, which is *not* thread safe, which will cause text to be
+jumbled if you add a second Consumer thread!
+
