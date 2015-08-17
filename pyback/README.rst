@@ -100,5 +100,5 @@ run examples: ::
 for 'processing' of tasks, which is *not* thread safe, which will cause text to be
 jumbled if you add a second Consumer thread!
 
-.. _view here on github: pyback_examples.py
+.. _view here on github: src/pyback_examples.py
 
