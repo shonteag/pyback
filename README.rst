@@ -15,6 +15,7 @@ Installation & Setup
 This is a single-file module, and requires no setup to use.  
 *Note* distutils (setup.py) may be implemented at some point, but simple download seems easier for a non-package.
 
-.. code-block:: python
-   import pyback
-   pyback.open_channel('test_channel')
+```python
+import pyback
+pyback.open_channel('my_new_channel')
+```
