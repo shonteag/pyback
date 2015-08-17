@@ -20,8 +20,17 @@ Goals
 
 Installation & Setup
 ====================
+**Installation**
+
 This is a single-file module, and requires no setup to use.  
+
 *Note* distutils (setup.py) may be implemented at some point, but simple download seems easier for a non-package.
+
+**Testing**
+
+If installed from source distribution, included unittests can be run via: ::
+
+	$ nosetests
 
 Available Methods
 =================
@@ -66,4 +75,13 @@ This snippet, if run, will output to console: ::
 
 The only reserved value that **may not** apear in kwargs passed via
 a call to publish() is "__channel". Doing so will throw the exception::
-	pyback.PybackError()
+
+	pyback.PybackError(Exception)
+
+
+There is also a class method available for all instances of ``Evt`` which
+allows user to retrieve the channel over which the event was passed: ::
+
+	pyback.Evt.get_channel()
+
+
