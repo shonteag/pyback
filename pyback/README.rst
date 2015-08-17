@@ -90,7 +90,9 @@ allows user to retrieve the channel name (as a str) over which the event was pas
 Examples
 ========
 
-To view examples, download source directory or `view here on github`_.
+To view examples, download source directory or `view here on github`_. These are written
+in python2.7 and will throw SyntaxErrors if run on 3.4 (probably due to ``print 'blah'``
+of 2.7 instead of ``print('blah')`` of 3.4).
 There are several examples available, all are documented within the source code. To
 run examples: ::
 
