@@ -128,7 +128,35 @@ OUTPUT:"""
 	print "-" * 50
 
 
+def example_4():
+	print """EXAMPLE 4
+In this example, we register a class method as
+a handler for evt. Not too difficult, really.
+OUTPUT:
+"""
+	class Dummy(object):
+		def __init__(self, channel_key):
+			# the object subscribes itself to designated
+			# channel on __init__. This could also be done
+			# from outside the object scope desired.
+			pyback.subscribe(channel_key, self.class_evt_handler)
+
+		def class_evt_handler(self, evt):
+			print "__channel:", evt.get_channel()
+			print "evt name:", evt.name
+
+	dum = Dummy('example_4_channel')
+	# publish an event
+	pyback.publish('example_4_channel', name='instantiated_handler_evt')
+	# unregister from outside the object scope
+	pyback.unsubscribe('example_4_channel', dum.class_evt_handler)
+	# publish again, this one will be ignored, since handler
+	# was unsubscribed
+	pyback.publish('example_4_channel', name='instantiated_handler_evt2')
+
+
 if __name__ == "__main__":
 	example_1()
 	example_2()
 	example_3()
+	example_4()

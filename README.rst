@@ -34,8 +34,8 @@ If installed from source distribution, included unittests can be run via: ::
 
 	$ nosetests
 
-Available Methods
-=================
+Methods
+=======
 **Helper methods**. These do not need to be called,
 but can help the user to manage open channels::
 	open_channel('channel_name')
