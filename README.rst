@@ -15,7 +15,12 @@ Installation & Setup
 This is a single-file module, and requires no setup to use.  
 *Note* distutils (setup.py) may be implemented at some point, but simple download seems easier for a non-package.
 
-``python
-import pyback
-pyback.open_channel('my_new_channel')
-``
+Available Methods
+-----------------
+`
+open_channel('channel_name')
+close_channel('channel_name')
+subscribe('channel_name', event_handler_function)
+unsubscribe('channel_name', event_handler_function)
+publish('channel_name', kwarg1=value1, kwarg2=value2, ...)
+`
