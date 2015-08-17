@@ -63,6 +63,62 @@ OUTPUT:"""
 
 	print "-" * 50
 
+
+def example_3():
+	import Queue  # thread safe
+	import threading
+	import time
+
+	print """EXAMPLE 3
+In this example, I created a Producer/Consumer type threaded setup,
+using a Queue object to send tasks back and forth.
+The 'tasks' are simple string literals, and processing is simply
+outputing to stdout, but it's pretty obvious how to adapt such a
+structure to be pretty flexible.
+OUTPUT:"""
+	
+	def consumer_method(consumer_id, queue, channel_key):
+		while True:
+			try:
+				string = queue.get_nowait()
+			except Queue.Empty, e:
+				# queue is now empty
+				break
+			
+			# perform processing
+			print "{0} thread processed:".format(consumer_id), string
+			# issue an event over the passed channel
+			pyback.publish(channel_key, task_data=string, consumer_id=consumer_id)
+			# task processing.
+			queue.task_done()
+
+		return  # kills the thread
+
+	def evt_handler(evt):
+		# alert user to task processing
+		print "Evt:"
+		print "  task_data:", evt.task_data
+		print "  consumer_id:", evt.consumer_id
+
+	queue = Queue.Queue()
+	queue.put('task1')
+	queue.put('task2')
+	queue.put('task3')
+	queue.put('task4')
+	queue.put('task5')
+	queue.put('task6')
+
+	channel_key = 'consumer_channel'
+	pyback.subscribe(channel_key, evt_handler)
+
+	# launch a consumer
+	thread = threading.Thread(target=consumer_method, args=('consumerID#1', queue, channel_key))
+	thread.start()
+
+	thread.join()
+	print "-" * 50
+
 if __name__ == "__main__":
 	example_1()
 	example_2()
+	example_3()

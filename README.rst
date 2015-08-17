@@ -80,8 +80,17 @@ a call to publish() is "__channel". Doing so will throw the exception::
 
 
 There is also a class method available for all instances of ``Evt`` which
-allows user to retrieve the channel over which the event was passed: ::
+allows user to retrieve the channel name (as a str) over which the event was passed: ::
 
 	pyback.Evt.get_channel()
 
+
+Examples
+========
+
+To view examples, download source directory or browse to file ``pyback_examples.py``.
+There are several examples available, all are documented within the source code. To
+run examples: ::
+
+	$ python pyback_examples.py
 
