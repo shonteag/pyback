@@ -43,12 +43,14 @@ Objects
 =======
 
 **pyback.Evt(object)**
+
 Event handlers must accept exactly one argument, which will
 be of type::
 	pyback.Evt(channel, **kwargs)
 
 ``**kwargs`` argument is dict ({}) with key, value pairs which
 will be keyed to Evt's built-in ``__dict__``. For example: ::
+
 	import pyback
 	def evt_handler(evt):
 		print evt.name
@@ -56,7 +58,9 @@ will be keyed to Evt's built-in ``__dict__``. For example: ::
 	pyback.subscribe('test_channel', evt_handler)
 	pyback.publish('test_channel', name="test_evt_name", an_int=42)
 
+
 This snippet, if run, will output to console: ::
+
 	test_evt_name
 	42
 
