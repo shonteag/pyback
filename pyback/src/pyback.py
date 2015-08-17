@@ -61,8 +61,8 @@ def open_channel(channel_key):
 def close_channel(channel_key):
     """
     Static method for closing an entire channel.
-    This will disregard currently running pub/subs
-    and no events will be passed along this channel.
+    This will even close currently running pub/subs
+    and no events will be passed along the channel.
 
     If successful, returns true.
     """
