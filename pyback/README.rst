@@ -56,7 +56,8 @@ Objects
 **pyback.Evt(object)**
 
 Event handlers must accept exactly one argument, which will
-be of type::
+be of type ::
+
 	pyback.Evt(channel, **kwargs)
 
 ``**kwargs`` argument is dict ({}) with key, value pairs which

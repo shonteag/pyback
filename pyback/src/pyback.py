@@ -32,6 +32,7 @@ class Evt(object):
         # conflicts.
         if '__channel' in kwargs:
             raise PybackError("'__channel' is reserved keyword.")
+            return
 
         for k, v in kwargs.items():
             self.__channel = str(channel)
@@ -45,17 +46,13 @@ class Evt(object):
 def open_channel(channel_key):
     """
     Static method for creating a new channel.
-
-    If successfuly (opened, or already open),
-    return true.
     """
     channel_key = str(channel_key)
 
     if channel_key in _CHANNELS:
-        return True
+        raise PybackError("Channel already exists.")
     else:
-        _CHANNELS.update({channel_key: []})
-        return True
+        _CHANNELS[channel_key] = []
 
 
 def close_channel(channel_key):
@@ -63,16 +60,13 @@ def close_channel(channel_key):
     Static method for closing an entire channel.
     This will even close currently running pub/subs
     and no events will be passed along the channel.
-
-    If successful, returns true.
     """
     channel_key = str(channel_key)
 
     if channel_key not in _CHANNELS:
-        return True
+        raise PybackError("Channel does not exist.")
     else:
         _CHANNELS.pop(channel_key)
-        return True
 
 
 # Pub/subs
@@ -115,7 +109,8 @@ def unsubscribe(channel_key, func_call):
     channel_key = str(channel_key)
 
     if channel_key not in _CHANNELS:
-        raise
+        raise PybackError("{0} channel_key does not exist"
+                          .format(channel_key))
     else:
         _CHANNELS[channel_key].remove(func_call)
 # end unsubscribe
@@ -146,6 +141,7 @@ def publish(channel_key, **kwargs):
                 func_call(evt)
             except:
                 # func not avaible at this time.
+                # NEEDS A WARNING, NOT AN EXCEPTION
                 pass
 # end publish
 
